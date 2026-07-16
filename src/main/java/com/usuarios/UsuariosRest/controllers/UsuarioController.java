@@ -20,14 +20,14 @@ public class UsuarioController {
 
 
 
-
+    //MÉTODO GET (OBTENER TODOS LOS USUARIOS))
     @GetMapping
     public ArrayList<UsuarioModel> getUsers(){
         return this.userService.getUsuario();
     }
 
 
-
+    //MÉTODO GET POR ID (BUSCAR UN USUARIO)
     @GetMapping(path = "/{id}")
     public ResponseEntity<?> getUserById(@PathVariable("id") Long id){
         Optional<UsuarioModel> user = this.userService.getbyId(id);
@@ -39,14 +39,14 @@ public class UsuarioController {
     }
 
 
-
+    // MÉTODO POST (AGREGAR / CREAR USUARIO)
     @PostMapping
     public UsuarioModel saveUser(@RequestBody UsuarioModel user){
         return  this.userService.saveUser(user);
     }
 
 
-
+    // MÉTODO PUT (EDITAR / ACTUALIZAR USUARIO)
     @PutMapping(path = "/{id}")
     public ResponseEntity<?> updateUserById(@RequestBody UsuarioModel request, @PathVariable("id") Long id) {
         try {
@@ -64,7 +64,7 @@ public class UsuarioController {
     }
 
 
-
+    // MÉTODO DELETE (ELIMINAR USUARIO)
     @DeleteMapping(path = "/{id}")
     public ResponseEntity<?> deleteUserById(@PathVariable("id") Long id){
         try {
